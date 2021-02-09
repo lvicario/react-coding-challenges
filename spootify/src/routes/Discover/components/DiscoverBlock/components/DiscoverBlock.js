@@ -2,6 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import DiscoverItem from './DiscoverItem';
+// Below are relatively deep path, we can add customization to webpack
+// to add aliases to avoid very deep paths, or use typescript path/alias
 import Spinner from "../../../../../common/utils/Spinner";
 import ErrorMessage from "../../../../../common/utils/ErrorMessage";
 import '../styles/_discover-block.scss';
