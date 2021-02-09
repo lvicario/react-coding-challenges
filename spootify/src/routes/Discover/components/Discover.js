@@ -30,9 +30,28 @@ const Discover = () => {
 
   return (
     <div className="discover">
-      <DiscoverBlock text="RELEASED THIS WEEK" id="released" data={playlist.albums} />
-      <DiscoverBlock text="FEATURED PLAYLISTS" id="featured" data={newRelease.albums} />
-      <DiscoverBlock text="BROWSE" id="browse" data={genres.albums} imagesKey="icons" />
+      <DiscoverBlock
+        text="RELEASED THIS WEEK"
+        id="released"
+        data={playlist.albums}
+        errorMessage={playlist.errorMessage}
+        isFetching={playlist.isFetching}
+      />
+      <DiscoverBlock
+        text="FEATURED PLAYLISTS"
+        id="featured"
+        data={newRelease.albums}
+        errorMessage={newRelease.errorMessage}
+        isFetching={newRelease.isFetching}
+      />
+      <DiscoverBlock
+        text="BROWSE"
+        id="browse"
+        data={genres.albums}
+        imagesKey="icons"
+        errorMessage={genres.errorMessage}
+        isFetching={genres.isFetching}
+      />
     </div>
   );
 }
