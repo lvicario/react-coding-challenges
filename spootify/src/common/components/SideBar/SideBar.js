@@ -32,7 +32,7 @@ export default function SideBar() {
     <div className="sidebar">
       <div className="sidebar__profile">
         <Avatar />
-        <p>Bob Smith</p>
+        <p>Leandro Vicario</p>
       </div>
       <div className="sidebar__options">
         {renderSideBarOption('/', faHeadphonesAlt, 'Discover', { currentPath })}

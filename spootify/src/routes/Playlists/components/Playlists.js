@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Playlists() {
+export default function Search() {
   return (
-    <h1>Playlists</h1>
+    <h1>Search</h1>
   )
 }
