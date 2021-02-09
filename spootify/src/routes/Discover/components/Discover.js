@@ -26,7 +26,7 @@ const Discover = () => {
         dispatch(fetchGenres())
       }
     }
-  }, [dispatch, auth.token, playlist.isFetched, newRelease.isFetched])
+  }, [dispatch, auth.token, playlist.isFetched, newRelease.isFetched, genres.isFetched])
 
   return (
     <div className="discover">
