@@ -7,14 +7,14 @@ const initialState = {
     errorMessage: null
 }
 
-export const playlistReducer = (state = initialState, action) => {
+export const newReleaseReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case ActionTypes.fetchPlaylistStart:
+		case ActionTypes.fetchNewReleaseStart:
 			return {
 				...state,
 				isFetching: true
 			};
-		case ActionTypes.fetchPlaylistSuccess:
+		case ActionTypes.fetchNewReleaseSuccess:
 			return {
 				...state,
 				isFetching: false,
@@ -22,7 +22,7 @@ export const playlistReducer = (state = initialState, action) => {
 				albums: action.payload,
 				errorMessage: null
 			};
-		case ActionTypes.fetchPlaylistFailure:
+		case ActionTypes.fetchNewReleaseFailure:
 			return {
 				...state,
 				isFetching: false,
@@ -35,4 +35,4 @@ export const playlistReducer = (state = initialState, action) => {
 	}
 }
 
-export default playlistReducer;
+export default newReleaseReducer;

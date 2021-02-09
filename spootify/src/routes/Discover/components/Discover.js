@@ -1,26 +1,38 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch} from "react-redux";
-import { fetchPlaylist } from "./../../../store/actions";
+import { fetchPlaylist, fetchNewRelease, fetchGenres } from "./../../../store/actions";
 import DiscoverBlock from './DiscoverBlock/components/DiscoverBlock';
 import '../styles/_discover.scss';
 
 const Discover = () => {
   const dispatch = useDispatch();
   const auth = useSelector(({ auth }) => auth);
-  const albums = useSelector(({ playlist }) => playlist.albums);
+  const playlist = useSelector(({ playlist }) => playlist);
+  const newRelease = useSelector(({ newRelease }) => newRelease);
+  const genres = useSelector(({ genres }) => genres);
 
   useEffect(() => {
-    // Only fetch if authenticated & if it's not fetched yet
-    if (auth.token && albums.length === 0) {
-      dispatch(fetchPlaylist())
+    // Only fetch if authenticated & if items are not yet fetched
+    if (auth.token) {
+      if (!playlist.isFetched) {
+        dispatch(fetchPlaylist())
+      }
+
+      if (!newRelease.isFetched) {
+        dispatch(fetchNewRelease())
+      }
+
+      if (!genres.isFetched) {
+        dispatch(fetchGenres())
+      }
     }
-  }, [dispatch, auth.token, albums.length])
+  }, [dispatch, auth.token, playlist.isFetched, newRelease.isFetched])
 
   return (
     <div className="discover">
-      <DiscoverBlock text="RELEASED THIS WEEK" id="released" data={albums} />
-      {/* <DiscoverBlock text="FEATURED PLAYLISTS" id="featured" data={albums} /> */}
-      {/* <DiscoverBlock text="BROWSE" id="browse" data={albums} imagesKey="icons" /> */}
+      <DiscoverBlock text="RELEASED THIS WEEK" id="released" data={playlist.albums} />
+      <DiscoverBlock text="FEATURED PLAYLISTS" id="featured" data={newRelease.albums} />
+      <DiscoverBlock text="BROWSE" id="browse" data={genres.albums} imagesKey="icons" />
     </div>
   );
 }

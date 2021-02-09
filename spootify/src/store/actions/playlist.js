@@ -27,14 +27,14 @@ export const fetchPlaylist = () => async (dispatch, getState) => {
 	dispatch(fetchPlaylistStart());
 
 	try {		
-		const response = await axios(`${config.api.baseUrl}/browse/new-releases?limit=10`, {
+		const response = await axios(`${config.api.baseUrl}/browse/featured-playlists`, {
 			method: "GET",
 			headers: {
 				"Authorization": "Bearer " + auth.token
 			}
 		});
 
-		dispatch(fetchPlaylistSuccess(response.data.albums.items));
+		dispatch(fetchPlaylistSuccess(response.data.playlists.items));
 	} catch (err) {
 		dispatch(fetchPlaylistFailure(err.message));
 	}
