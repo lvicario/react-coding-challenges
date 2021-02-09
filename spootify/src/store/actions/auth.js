@@ -2,10 +2,6 @@ import axios from "axios";
 import config from "./../../config";
 import { ActionTypes } from "./types";
 
-// Temporary, should be in environment variable
-const clientId = "d486a396a80a479bb38ea3d697c0b77d";
-const clientSecret = "a0cc8610e0f049dcba084a69e4285993";
-
 const fetchAuthStart = () => {
     return {
         type: ActionTypes.fetchAuthStart,
@@ -34,7 +30,7 @@ export const fetchAuth = () => async (dispatch) => {
 			"grant_type=client_credentials", {
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",
-				"Authorization": "Basic " + btoa(clientId + ":" + clientSecret)
+				"Authorization": "Basic " + btoa(process.env.REACT_APP_CLIENT_ID + ":" + process.env.REACT_APP_CLIENT_SECRET)
 			}
 		});
 
